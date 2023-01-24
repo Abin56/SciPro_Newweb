@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lepton_sci_web/recorded_section/reco_section_screen.dart';
+import 'package:lepton_sci_web/study_material_section/list_of_S-material.dart';
 
 import '../login/sign_in_screen.dart';
 
@@ -70,11 +71,11 @@ class _TopBarContentsState extends State<TopBarContents> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Navigator.push(context, MaterialPageRoute(
-                                  //   builder: (context) {
-                                  //     return RecordedSectionListScreen();
-                                  //   },
-                                  // ));
+                                  Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) {
+                                      return ListofStudyMaterialScreen();
+                                    },
+                                  ));
                                 },
                                 child: Text(
                                   '+91 9048900024',
