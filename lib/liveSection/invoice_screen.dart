@@ -11,9 +11,7 @@ import 'package:printing/printing.dart';
 
 class SubRecInvoice extends StatelessWidget {
   String collection_name;
-   SubRecInvoice({
-    required  this.collection_name,
-    super.key});
+  SubRecInvoice({required this.collection_name, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -136,14 +134,16 @@ class SubRecInvoice extends StatelessWidget {
                                                                 data.useremail,
                                                             inVoiceNumber: data
                                                                 .inVoiceNumber,
-                                                            price: 100.0,
+                                                            price: double.parse(
+                                                                data
+                                                                    .totalprice),
                                                             purchasingModel: data
                                                                 .courseName)),
                                               );
                                             },
                                             child: ButtonContainerWidget(
                                               curving: 30,
-                                              colorindex: 4,
+                                              colorindex: 5,
                                               height: 30,
                                               width: 150,
                                               child: Center(

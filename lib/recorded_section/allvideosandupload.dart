@@ -27,7 +27,7 @@ class AllvideosandUploadScreen extends StatelessWidget {
               },
               child: ButtonContainerWidget(
                 curving: 30,
-                colorindex: 4,
+                colorindex: 5,
                 height: 200,
                 width: 400,
                 child: Center(
@@ -53,7 +53,7 @@ class AllvideosandUploadScreen extends StatelessWidget {
               },
               child: ButtonContainerWidget(
                 curving: 30,
-                colorindex: 4,
+                colorindex: 5,
                 height: 200,
                 width: 400,
                 child: Center(

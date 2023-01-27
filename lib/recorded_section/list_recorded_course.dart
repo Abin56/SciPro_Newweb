@@ -121,7 +121,7 @@ class RecordedCoursesListScreen extends StatelessWidget {
                                                 fontSize: 15),
                                           ),
                                           Text(
-                                             '${data.duration} days',
+                                            '${data.duration} days',
                                             style: GoogleFonts.montserrat(
                                                 color: Colors.black,
                                                 fontSize: 13,
@@ -212,7 +212,7 @@ class RecordedCoursesListScreen extends StatelessWidget {
                                             },
                                             child: ButtonContainerWidget(
                                               curving: 30,
-                                              colorindex: 4,
+                                              colorindex: 5,
                                               height: 25,
                                               width: 120,
                                               child: Center(

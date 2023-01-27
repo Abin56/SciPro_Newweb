@@ -263,7 +263,92 @@ class _HomeScreenState extends State<HomeScreen> {
                     //  top: screenSize.height*1/6,
                     // left: screenSize.width*1/3.25),
                     // child:
-
+// ResponsiveWidget.isSmallScreen(context)
+//                         ? Center(
+//                             child: Padding(
+//                                 padding:
+//                                     const EdgeInsets.only(left: 400, top: 60),
+//                                 child: InkWell(
+//                                     onTap: () {
+//                                       // Navigator.push(
+//                                       //   context,
+//                                       //   MaterialPageRoute(
+//                                       //       builder: (context) =>
+//                                       //           const AddDisplay()),
+//                                       // );
+//                                     },
+//                                     child: ConstrainedBox(
+//                                       constraints: BoxConstraints(
+//                                           maxWidth: screenSize.width * 0.7),
+//                                       child: Column(
+//                                         mainAxisAlignment:
+//                                             MainAxisAlignment.center,
+//                                         children: <Widget>[
+//                                           Row(
+//                                             children: const [
+//                                               Flexible(
+//                                                 child: TextScroll(
+//                                                   "ALERT !!!     Scrolling the text and messages in here",
+//                                                   style: TextStyle(
+//                                                       color: Color.fromARGB(
+//                                                           255, 255, 0, 0),
+//                                                       fontSize: 15),
+//                                                   intervalSpaces: 10,
+//                                                   velocity: Velocity(
+//                                                       pixelsPerSecond:
+//                                                           Offset(50, 0)),
+//                                                 ),
+//                                               ),
+//                                               SizedBox(width: 4),
+//                                               Expanded(
+//                                                 child: SizedBox(),
+//                                               ),
+//                                             ],
+//                                           ),
+//                                         ],
+//                                       ),
+//                                     ))))
+//                         : Padding(
+//                             padding: const EdgeInsets.only(left: 500, top: 90),
+//                             child: InkWell(
+//                               onTap: () {
+//                                 // Navigator.push(
+//                                 //   context,
+//                                 //   MaterialPageRoute(
+//                                 //       builder: (context) => const AddDisplay()),
+//                                 // );
+//                               },
+//                               child: ConstrainedBox(
+//                                 constraints: BoxConstraints(
+//                                     maxWidth: screenSize.width * 0.7),
+//                                 child: Column(
+//                                   mainAxisAlignment: MainAxisAlignment.center,
+//                                   children: <Widget>[
+//                                     Row(
+//                                       children: const [
+//                                         Flexible(
+//                                           child: TextScroll(
+//                                             "ALERT !!!     Scrolling the text and messages in here",
+//                                             style: TextStyle(
+//                                                 color: Color.fromARGB(
+//                                                     255, 255, 0, 0),
+//                                                 fontSize: 25),
+//                                             intervalSpaces: 10,
+//                                             velocity: Velocity(
+//                                                 pixelsPerSecond: Offset(50, 0)),
+//                                           ),
+//                                         ),
+//                                         SizedBox(width: 4),
+//                                         Expanded(
+//                                           child: SizedBox(),
+//                                         ),
+//                                       ],
+//                                     ),
+//                                   ],
+//                                 ),
+//                               ),
+//                             ),
+//       ),
                     ResponsiveWidget.isSmallScreen(context)
                         ? Container(
                             padding: EdgeInsets.only(top: 10),
@@ -272,6 +357,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 left: screenSize.width * 1 / 6),
                             child: Column(
                               children: [
+                           
                                 Row(
                                   children: [
                                     Text(

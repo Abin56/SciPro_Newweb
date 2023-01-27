@@ -18,7 +18,12 @@ class NewWaitingRoomScreen extends StatefulWidget {
 
   String roomid;
   var checking;
-  NewWaitingRoomScreen({required this.roomid, required this.username,required this.course, required this.id, super.key});
+  NewWaitingRoomScreen(
+      {required this.roomid,
+      required this.username,
+      required this.course,
+      required this.id,
+      super.key});
 
   @override
   State<NewWaitingRoomScreen> createState() => _NewWaitingRoomScreenState();
@@ -188,7 +193,7 @@ class _NewWaitingRoomScreenState extends State<NewWaitingRoomScreen> {
               },
               child: ButtonContainerWidget(
                 curving: 0,
-                colorindex: 4,
+                colorindex: 2,
                 height: 60,
                 width: 200,
                 child: Center(

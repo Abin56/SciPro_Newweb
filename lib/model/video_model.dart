@@ -19,9 +19,10 @@ class VideoUploadModel {
   VideoUploadModel({
     required this.videoImage,
     required this.course,
-     this.id,
+    this.id,
     required this.videoPath,
     required this.videoName,
+    required this.dateTime,
   });
 
   String? id;
@@ -29,6 +30,7 @@ class VideoUploadModel {
   String videoPath;
   String videoName;
   String videoImage;
+  DateTime dateTime;
 
   factory VideoUploadModel.fromJson(Map<String, dynamic> json) =>
       VideoUploadModel(
@@ -37,6 +39,7 @@ class VideoUploadModel {
         videoPath: json["videoPath"] ?? '',
         videoName: json["videoName"] ?? '',
         videoImage: json["videoImage"] ?? '',
+        dateTime: json["dateTime"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -45,6 +48,7 @@ class VideoUploadModel {
         "videoPath": videoPath,
         "videoName": videoName,
         "videoImage": videoImage,
+        "dateTime": dateTime,
       };
 }
 
@@ -55,48 +59,45 @@ class VideoUploadToFireBase {
     // if (!isWorking) {
     //   isWorking = true;
 
-      try {
-        final firebase = FirebaseFirestore.instance;
-        final doc = firebase.collection("RecordedCourse_videos").doc();
-        productModel.id = doc.id;
+    try {
+      final firebase = FirebaseFirestore.instance;
+      final doc = firebase.collection("RecordedCourse_videos").doc();
+      productModel.id = doc.id;
 
-        doc.set(productModel.toJson())
-        
-        .then((value) {
-          // isWorking = false;
-          return showDialog(
-            context: context,
-            barrierDismissible: false, // user must tap button!
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: const Text('Message'),
-                content: SingleChildScrollView(
-                  child: ListBody(
-                    children: const <Widget>[
-                      Text('Successfully Uploaded to Server'),
-                    ],
-                  ),
-                ),
-                actions: <Widget>[
-                  TextButton(
-                    child: const Text('ok'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              );
-            },
-          );
-        });
-        // .then((value) => Get.to(BuyingOrdersScreen(
-        //       id: doc.id,
-        //     )));
-      } on FirebaseException catch (e) {
-        log('Error ${e.message.toString()}');
+      doc.set(productModel.toJson()).then((value) {
         // isWorking = false;
-      }
-  
+        return showDialog(
+          context: context,
+          barrierDismissible: false, // user must tap button!
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Message'),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: const <Widget>[
+                    Text('Successfully Uploaded to Server'),
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      });
+      // .then((value) => Get.to(BuyingOrdersScreen(
+      //       id: doc.id,
+      //     )));
+    } on FirebaseException catch (e) {
+      log('Error ${e.message.toString()}');
+      // isWorking = false;
     }
   }
+}
 // }

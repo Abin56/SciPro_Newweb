@@ -29,31 +29,31 @@ class RecordedSectionListScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            PreviousStudentCourseListScreen()),
-                  );
-                },
-                child: ButtonContainerWidget(
-                  curving: 30,
-                  colorindex: 5,
-                  height: 200,
-                  width: 400,
-                  child: Center(
-                    child: Text(
-                      'Add PreviousStudrnts',
-                      style: GoogleFonts.montserrat(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                ),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //           builder: (context) =>
+              //               PreviousStudentCourseListScreen()),
+              //     );
+              //   },
+              //   child: ButtonContainerWidget(
+              //     curving: 30,
+              //     colorindex: 5,
+              //     height: 200,
+              //     width: 400,
+              //     child: Center(
+              //       child: Text(
+              //         'Add PreviousStudrnts',
+              //         style: GoogleFonts.montserrat(
+              //             color: Colors.white,
+              //             fontSize: 18,
+              //             fontWeight: FontWeight.w700),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               GestureDetector(
                 onTap: () {
                   Navigator.push(

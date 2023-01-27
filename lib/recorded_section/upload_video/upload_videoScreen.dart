@@ -234,7 +234,7 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
                         },
                         child: ButtonContainerWidget(
                           curving: 30,
-                          colorindex: 4,
+                          colorindex: 5,
                           height: 60,
                           width: 200,
                           child: Center(
@@ -273,6 +273,7 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
                       GestureDetector(
                         onTap: () async {
                           final details = VideoUploadModel(
+                            dateTime: DateTime.now(),
                             videoImage: networkImage!,
                             course: dropDownValue!["id"],
                             videoPath: networkVideoPath!,
@@ -283,7 +284,7 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
                         },
                         child: ButtonContainerWidget(
                           curving: 30,
-                          colorindex: 4,
+                          colorindex: 5,
                           height: 60,
                           width: 200,
                           child: Center(

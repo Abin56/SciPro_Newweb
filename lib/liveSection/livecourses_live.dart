@@ -227,7 +227,7 @@ class LiveCoursesListScreen extends StatelessWidget {
                                             },
                                             child: ButtonContainerWidget(
                                               curving: 30,
-                                              colorindex: 4,
+                                              colorindex: 5,
                                               height: 30,
                                               width: 150,
                                               child: Center(

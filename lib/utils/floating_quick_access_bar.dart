@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lepton_sci_web/utils/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 import '../main_screens/live_classes.dart';
 import '../main_screens/rcorded_classes.dart';
 
@@ -19,9 +18,8 @@ class FloatingQuickAccessBar extends StatefulWidget {
 }
 
 class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
-  final Uri _url = Uri.parse(
-      "https://storage.googleapis.com/scipro-bucket/app-release%20(1).apk");
-
+  final Uri _url =
+      Uri.parse("https://storage.googleapis.com/scipro-bucket/app-release.apk");
   Future<void> _launchUrl() async {
     if (!await launchUrl(_url)) {
       throw 'Could not launch $_url';

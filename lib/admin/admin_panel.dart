@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lepton_sci_web/admin/admin_hybrid_courses.dart';
 
-
 import '../auth_service.dart';
 import '../faculties/faculties_screen.dart';
 import '../liveSection/live_section_selection_screen.dart';
 import '../main_screens/selected_recorded_course.dart';
 import '../recorded_section/reco_section_screen.dart';
+import '../study_material_section/list_of_S-material.dart';
 import 'admin_live_courses.dart';
 import 'admin_rec_display.dart';
 
@@ -249,7 +249,13 @@ class _AdminPanelState extends State<AdminPanel> {
                     ),
                     Container(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return ListofStudyMaterialScreen();
+                            },
+                          ));
+                        },
                         child: Container(
                             width: screenSize.width * 1 / 4,
                             height: screenSize.height * 1 / 8,
@@ -282,7 +288,14 @@ class _AdminPanelState extends State<AdminPanel> {
                     ),
                     Container(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) =>
+                          //           LiveSectionSelectionScreen()),
+                          // );
+                        },
                         child: Container(
                             width: screenSize.width * 1 / 4,
                             height: screenSize.height * 1 / 8,
@@ -301,80 +314,14 @@ class _AdminPanelState extends State<AdminPanel> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text(
-                                    "Live Mock tests",
+                                    "Ads for Book",
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: screenSize.width * 1 / 70),
                                   ),
-                                  Icon(Icons.computer)
+                                  Icon(Icons.book)
                                 ])),
                       ),
-                    ),
-                    SizedBox(
-                      height: screenSize.height * 1 / 20,
-                    ),
-                    Container(
-                      child: InkWell(
-                        onTap: () {},
-                        child: Container(
-                            width: screenSize.width * 1 / 4,
-                            height: screenSize.height * 1 / 8,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(16),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 10,
-                                    color: Colors.black.withOpacity(0.06),
-                                    offset: const Offset(0, 4),
-                                  )
-                                ]),
-                            child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(
-                                    "Offline Mock Tests",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: screenSize.width * 1 / 70),
-                                  ),
-                                  Icon(Icons.description)
-                                ])),
-                      ),
-                    ),
-                    SizedBox(
-                      height: screenSize.height * 1 / 20,
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                          width: screenSize.width * 1 / 4,
-                          height: screenSize.height * 1 / 8,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 10,
-                                  color: Colors.black.withOpacity(0.06),
-                                  offset: const Offset(0, 4),
-                                )
-                              ]),
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  "Study Materials ",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: screenSize.width * 1 / 70),
-                                ),
-                                Icon(Icons.document_scanner)
-                              ])),
-                    ),
-                    SizedBox(
-                      height: screenSize.height * 1 / 20,
                     ),
                   ],
                 ),
