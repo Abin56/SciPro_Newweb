@@ -140,7 +140,9 @@ class SubRecInvoice extends StatelessWidget {
                                                                 data.useremail,
                                                             inVoiceNumber: data
                                                                 .inVoiceNumber,
-                                                            price: 100.0,
+                                                            price: double.parse(
+                                                                data
+                                                                    .totalprice),
                                                             purchasingModel: data
                                                                 .courseName)),
                                                   );

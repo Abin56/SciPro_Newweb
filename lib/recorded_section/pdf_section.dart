@@ -108,10 +108,12 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
 
   /// This method takes a page format and generates the Pdf file data
   Future<Uint8List> buildPdf(PdfPageFormat format) async {
-    double gst = widget.price - (widget.price / 1.18);
-    double cgst = (widget.price - (widget.price / 1.18)) / 2;
-    double sgst = (widget.price - (widget.price / 1.18)) / 2;
-    double igst = widget.price - (widget.price / 1.18);
+    double gst = widget.price / 1.18;
+    double sgst = (widget.price - gst) / 2;
+
+    // double cgst = (widget.price - (widget.price / 1.18)) / 2;
+    // double sgst = (widget.price - (widget.price / 1.18)) / 2;
+    // double igst = widget.price - (widget.price / 1.18);
     // double totalprice = widget.price + gst + sgst + deliveryCharge;
     // Create the Pdf document
     final pw.Document doc = pw.Document();
@@ -122,7 +124,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
     doc.addPage(
       pw.Page(
         build: (pw.Context context) {
-          var subtotal = widget.price - sgst;
+          // var subtotal = widget.price - sgst;
           return pw.Column(children: [
             pw.Row(children: [
               pw.Column(children: [
@@ -185,11 +187,11 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                       pw.SizedBox(height: 119),
                       pw.Text("Amount"),
                       pw.SizedBox(height: 20),
-                      pw.Text("Subtotal : " + subtotal.toStringAsFixed(2)),
+                      pw.Text("Subtotal : " + gst.toStringAsFixed(2)),
                       pw.SizedBox(height: 20),
                       pw.Text("SGST : " + sgst.toStringAsFixed(2)),
                       pw.SizedBox(height: 20),
-                      pw.Text("CGST : " + cgst.toStringAsFixed(2)),
+                      pw.Text("CGST : " + sgst.toStringAsFixed(2)),
                       pw.SizedBox(height: 20),
                       pw.Text("Total " + widget.price.toString()),
                       pw.SizedBox(height: 20),
