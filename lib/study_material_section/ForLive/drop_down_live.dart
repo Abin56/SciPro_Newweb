@@ -3,18 +3,18 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-var studydropDownValue;
+var studydropDownLIVEValue;
 
-class StudyMaterialCourseDropDownButton extends StatefulWidget {
-  const StudyMaterialCourseDropDownButton({Key? key}) : super(key: key);
+class StudyMaterialCourseForLIVEDropDownButton extends StatefulWidget {
+  const StudyMaterialCourseForLIVEDropDownButton({Key? key}) : super(key: key);
 
   @override
-  State<StudyMaterialCourseDropDownButton> createState() =>
-      _StudyMaterialCourseDropDownButtonState();
+  State<StudyMaterialCourseForLIVEDropDownButton> createState() =>
+      _StudyMaterialCourseForLIVEDropDownButtonState();
 }
 
-class _StudyMaterialCourseDropDownButtonState
-    extends State<StudyMaterialCourseDropDownButton> {
+class _StudyMaterialCourseForLIVEDropDownButtonState
+    extends State<StudyMaterialCourseForLIVEDropDownButton> {
   @override
   Widget build(BuildContext context) {
     return dropDownButton();
@@ -22,16 +22,15 @@ class _StudyMaterialCourseDropDownButtonState
 
   StreamBuilder<QuerySnapshot<Map<String, dynamic>>> dropDownButton() {
     return StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("RecordedCourselist")
-            .snapshots(),
+        stream:
+            FirebaseFirestore.instance.collection("LiveCourselist").snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.hasData) {
             return DropdownButtonFormField(
-              hint: studydropDownValue == null
+              hint: studydropDownLIVEValue == null
                   ? const Text("select course")
-                  : Text(studydropDownValue!["courseTitle"]),
+                  : Text(studydropDownLIVEValue!["courseTitle"]),
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.green, width: 0.5),
@@ -60,7 +59,7 @@ class _StudyMaterialCourseDropDownButtonState
 
                 setState(
                   () {
-                    studydropDownValue = categoryIDObject;
+                    studydropDownLIVEValue = categoryIDObject;
                   },
                 );
               },

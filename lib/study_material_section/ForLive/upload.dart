@@ -6,20 +6,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lepton_sci_web/model/study_material/study_materil.dart';
+import 'package:lepton_sci_web/study_material_section/ForLive/drop_down_live.dart';
+import 'package:lepton_sci_web/study_material_section/ForLive/model/mode.dart';
 import 'package:lepton_sci_web/widgets/button_container.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
-import 'dropdown_cat-S_material.dart';
+import '../dropdown_cat-S_material.dart';
 
-class UploadStudyMaterialScreen extends StatefulWidget {
-  const UploadStudyMaterialScreen({super.key});
+class UploadStudyMaterialForLiveScreen extends StatefulWidget {
+  const UploadStudyMaterialForLiveScreen({super.key});
 
   @override
-  State<UploadStudyMaterialScreen> createState() =>
-      _UploadStudyMaterialScreenState();
+  State<UploadStudyMaterialForLiveScreen> createState() =>
+      _UploadStudyMaterialForLiveScreenState();
 }
 
-class _UploadStudyMaterialScreenState extends State<UploadStudyMaterialScreen> {
+class _UploadStudyMaterialForLiveScreenState
+    extends State<UploadStudyMaterialForLiveScreen> {
   String? networkMaterialPath;
 
   double videoProgress = 0.0;
@@ -31,7 +34,7 @@ class _UploadStudyMaterialScreenState extends State<UploadStudyMaterialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("StudyMaterial Upload Section"),
+        title: const Text("StudyMaterial Upload Section For Live"),
       ),
       body: SingleChildScrollView(
           child: Padding(
@@ -98,7 +101,7 @@ class _UploadStudyMaterialScreenState extends State<UploadStudyMaterialScreen> {
                   const SizedBox(
                     height: 40,
                   ),
-                  const StudyMaterialCourseDropDownButton(),
+                  const StudyMaterialCourseForLIVEDropDownButton(),
                   const SizedBox(
                     height: 40,
                   ),
@@ -184,16 +187,16 @@ class _UploadStudyMaterialScreenState extends State<UploadStudyMaterialScreen> {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          final studymaterils = StudyMaterialModel(
+                          final studymaterils = StudyMaterialForLIVEModel(
                               courseTitle: '',
                               id: '',
                               studymaterialFile: networkMaterialPath!,
                               subtitle: subTitleController.text.trim(),
-                              category: studydropDownValue!["id"],
+                              category: studydropDownLIVEValue!["id"],
                               subject: subjectController.text.trim());
-                          await StudyMaterialToFireBase()
-                              .studyMaterialController(studymaterils, context,
-                                  studydropDownValue!["id"]);
+                          await StudyMaterialforLVIEToFireBase()
+                              .studyMaterialforLIVEController(studymaterils,
+                                  context, studydropDownLIVEValue!["id"]);
                         },
                         child: ButtonContainerWidget(
                           curving: 30,

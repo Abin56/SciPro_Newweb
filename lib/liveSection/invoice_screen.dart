@@ -128,6 +128,7 @@ class SubRecInvoice extends StatelessWidget {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         InvoiceScreen(
+                                                          date: data.date,
                                                             customerName:
                                                                 data.userName,
                                                             email:

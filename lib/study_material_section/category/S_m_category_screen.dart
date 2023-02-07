@@ -4,8 +4,10 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lepton_sci_web/faculties/faculties_list.dart';
+import 'package:lepton_sci_web/study_material_section/ForLive/Screen.dart';
 import 'package:lepton_sci_web/study_material_section/category/add_new_category.dart';
 import 'package:lepton_sci_web/study_material_section/category/list_of_category.dart';
+import 'package:lepton_sci_web/study_material_section/list_of_S-material.dart';
 import 'package:lepton_sci_web/widgets/button_container.dart';
 
 class SmCategoryScreen extends StatelessWidget {
@@ -28,7 +30,7 @@ class SmCategoryScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => StudyMaterialCategoryScreen()),
+                        builder: (context) => ListofStudyMaterialScreen()),
                   );
                 },
                 child: ButtonContainerWidget(
@@ -38,7 +40,7 @@ class SmCategoryScreen extends StatelessWidget {
                   width: 400,
                   child: Center(
                     child: Text(
-                      'Create New Category',
+                      'For Recorded Courses',
                       style: GoogleFonts.montserrat(
                           color: Colors.white,
                           fontSize: 18,
@@ -52,7 +54,7 @@ class SmCategoryScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SmCategoryListScreen()),
+                        builder: (context) => ListofStudyMaterialLiveScreen()),
                   );
                 },
                 child: ButtonContainerWidget(
@@ -62,7 +64,7 @@ class SmCategoryScreen extends StatelessWidget {
                   width: 400,
                   child: Center(
                     child: Text(
-                      'View Category',
+                      'For Live Courses',
                       style: GoogleFonts.montserrat(
                           color: Colors.white,
                           fontSize: 18,

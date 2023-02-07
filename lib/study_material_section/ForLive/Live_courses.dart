@@ -5,10 +5,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lepton_sci_web/model/study_material/s_m_categoryModel.dart';
+import 'package:lepton_sci_web/study_material_section/ForLive/live_materals.dart';
 import 'package:lepton_sci_web/study_material_section/all_studymaterials.dart';
 
-class AllsmCategory extends StatelessWidget {
-  AllsmCategory({super.key});
+class AllsmCategoryForLIve extends StatelessWidget {
+  AllsmCategoryForLIve({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class AllsmCategory extends StatelessWidget {
       body: SafeArea(
           child: StreamBuilder(
               stream: FirebaseFirestore.instance
-                  .collection("RecordedCourselist")
+                  .collection("LiveCourselist")
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
@@ -48,7 +49,7 @@ class AllsmCategory extends StatelessWidget {
                                   onTap: () {
                                     Navigator.push(context, MaterialPageRoute(
                                       builder: (context) {
-                                        return AllStudyMaterialScreen(
+                                        return AllStudyMaterialForLIVEScreen(
                                           id: data.id,
                                           catData: data.courseTitle,
                                         );

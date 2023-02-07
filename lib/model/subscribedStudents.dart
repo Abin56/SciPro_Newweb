@@ -13,18 +13,18 @@ String RecordedCourseSubScribedUserModelToJson(
     json.encode(data.toJson());
 
 class RecordedCourseSubScribedUserModel {
-  RecordedCourseSubScribedUserModel({
-    required this.useremail,
-    required this.userName,
-    required this.courseid,
-    required this.uid,
-    required this.courseName,
-    required this.inVoiceNumber,
-    required this.date,
-    required this.time,
-    required this.totalprice,
-    required this.id,
-  });
+  RecordedCourseSubScribedUserModel(
+      {required this.useremail,
+      required this.userName,
+      required this.courseid,
+      required this.uid,
+      required this.courseName,
+      required this.inVoiceNumber,
+      required this.date,
+      required this.time,
+      required this.totalprice,
+      required this.id,
+      required this.joinDate});
 
   String userName;
   String courseid;
@@ -36,11 +36,13 @@ class RecordedCourseSubScribedUserModel {
   String time;
   String totalprice;
   String id;
+  String joinDate;
 
   factory RecordedCourseSubScribedUserModel.fromJson(
           Map<String, dynamic> json) =>
       RecordedCourseSubScribedUserModel(
         useremail: json["useremail"] ?? '',
+        joinDate: json["joinDate"] ?? '',
         inVoiceNumber: json["inVoiceNumber"] ?? '',
         date: json["date"] ?? '',
         time: json["time"] ?? '',
@@ -61,6 +63,7 @@ class RecordedCourseSubScribedUserModel {
         "courseid": courseid,
         "uid": uid,
         "time": time,
+        "joinDate": joinDate,
         "totalprice": totalprice,
         "id": id,
       };

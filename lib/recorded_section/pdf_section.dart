@@ -17,10 +17,12 @@ class InvoiceScreen extends StatefulWidget {
   String email;
   String purchasingModel;
   double price;
+  String date;
 
   InvoiceScreen(
       {required this.customerName,
       required this.email,
+      required this.date,
       required this.inVoiceNumber,
       required this.price,
       required this.purchasingModel,
@@ -33,23 +35,23 @@ class InvoiceScreen extends StatefulWidget {
 class _InvoiceScreenState extends State<InvoiceScreen> {
   String listID = '';
 
-  String dateText = "";
+  // String dateText = "";
   int deliveryCharge = 50;
 
   String formatCurrentDate(DateTime date) {
     return DateFormat("dd MMMM, yyyy").format(date);
   }
 
-  getCurrentLiveTime() {
-    final DateTime timeNow = DateTime.now();
-    final String liveDate = formatCurrentDate(timeNow);
+  // getCurrentLiveTime() {
+  //   final DateTime timeNow = DateTime.now();
+  //   final String liveDate = formatCurrentDate(timeNow);
 
-    if (this.mounted) {
-      setState(() {
-        dateText = liveDate;
-      });
-    }
-  }
+  //   if (this.mounted) {
+  //     setState(() {
+  //       dateText = liveDate;
+  //     });
+  //   }
+  // }
 
   creatNewMeeting() async {
     var random = Random();
@@ -64,12 +66,15 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
     // _counter();
 
     creatNewMeeting();
-    getCurrentLiveTime();
+    // getCurrentLiveTime();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    DateTime exdate = DateTime.parse(widget.date);
+    final DateFormat formatter = DateFormat('dd-MM-yyyy');
+    final String formatted = formatter.format(exdate);
     return Scaffold(
       appBar: AppBar(
         title: AppBar(
@@ -82,7 +87,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
           onTap: () async {
             Printing.layoutPdf(
               onLayout: (PdfPageFormat format) {
-                return buildPdf(format);
+                return buildPdf(format, formatted);
               },
             );
           },
@@ -107,7 +112,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
   }
 
   /// This method takes a page format and generates the Pdf file data
-  Future<Uint8List> buildPdf(PdfPageFormat format) async {
+  Future<Uint8List> buildPdf(PdfPageFormat format, var date) async {
     double gst = widget.price / 1.18;
     double sgst = (widget.price - gst) / 2;
 
@@ -157,7 +162,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                 pw.SizedBox(height: 13),
                 pw.Text("NO : VSCI" + widget.inVoiceNumber.toString()),
                 pw.SizedBox(height: 9),
-                pw.Text("Date : " + dateText),
+                pw.Text("Date : " + date),
               ]),
             ]),
             pw.SizedBox(height: 100),

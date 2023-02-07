@@ -1,19 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lepton_sci_web/getx/s_materials_getx.dart';
 import 'package:lepton_sci_web/model/study_material/s_m_categoryModel.dart';
-import 'package:lepton_sci_web/study_material_section/all_studymaterials.dart';
 
-class AllsmCategory extends StatelessWidget {
-  AllsmCategory({super.key});
+import '../../model/study_material/study_materil.dart';
+
+class AllStudyMaterialForLIVEScreen extends StatelessWidget {
+  var catData;
+  var id;
+  AllStudyMaterialForLIVEScreen(
+      {required this.catData, required this.id, super.key});
+  final getxController = Get.put(StudyMaterialController());
 
   @override
   Widget build(BuildContext context) {
     double _w = MediaQuery.of(context).size.width;
     int columnCount = 3;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("All Category"),
@@ -21,7 +27,9 @@ class AllsmCategory extends StatelessWidget {
       body: SafeArea(
           child: StreamBuilder(
               stream: FirebaseFirestore.instance
-                  .collection("RecordedCourselist")
+                  .collection("LiveCourselist")
+                  .doc(id)
+                  .collection("StudyMaterialsforlive")
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
@@ -34,7 +42,7 @@ class AllsmCategory extends StatelessWidget {
                       children: List.generate(
                         snapshot.data!.docs.length,
                         (int index) {
-                          final data = StudyMateriCategoryModel.fromJson(
+                          final data = StudyMaterialModel.fromJson(
                               snapshot.data!.docs[index].data());
                           return AnimationConfiguration.staggeredGrid(
                             position: index,
@@ -46,14 +54,46 @@ class AllsmCategory extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) {
-                                        return AllStudyMaterialScreen(
-                                          id: data.id,
-                                          catData: data.courseTitle,
+                                    showDialog(
+                                      context: context,
+                                      barrierDismissible:
+                                          false, // user must tap button!
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: const Text('Message'),
+                                          content: SingleChildScrollView(
+                                            child: ListBody(
+                                              children: const <Widget>[
+                                                Text('Do you want to Delete'),
+                                              ],
+                                            ),
+                                          ),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              child: const Text('cancel'),
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                            TextButton(
+                                              child: const Text('ok'),
+                                              onPressed: () {
+                                                FirebaseFirestore.instance
+                                                    .collection(
+                                                        "LiveCourselist")
+                                                    .doc(id)
+                                                    .collection(
+                                                        "StudyMaterialsforlive")
+                                                    .doc(data.id)
+                                                    .delete()
+                                                    .then((value) =>
+                                                        Navigator.pop(context));
+                                              },
+                                            ),
+                                          ],
                                         );
                                       },
-                                    ));
+                                    );
                                   },
                                   child: Container(
                                     margin: EdgeInsets.only(
@@ -74,7 +114,7 @@ class AllsmCategory extends StatelessWidget {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        data.courseTitle,
+                                        data.subtitle,
                                         style: GoogleFonts.montserrat(
                                             color: Colors.white,
                                             fontSize: 18,
@@ -101,3 +141,12 @@ class AllsmCategory extends StatelessWidget {
     );
   }
 }
+
+
+// import this Package in pubspec.yaml file
+// dependencies:
+// 
+// flutter_staggered_animations: 
+
+
+

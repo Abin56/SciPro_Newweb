@@ -130,10 +130,17 @@ class SubRecInvoice extends StatelessWidget {
                                               ),
                                               GestureDetector(
                                                 onTap: () async {
+                                                  print(
+                                                      "${data.joinDate}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                                                   await Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) => InvoiceScreen(
+                                                            date: data.joinDate
+                                                                    .isEmpty
+                                                                ? DateTime.now()
+                                                                    .toString()
+                                                                : data.joinDate,
                                                             customerName:
                                                                 data.userName,
                                                             email:

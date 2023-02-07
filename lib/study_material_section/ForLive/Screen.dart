@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lepton_sci_web/study_material_section/ForLive/Live_courses.dart';
+import 'package:lepton_sci_web/study_material_section/ForLive/upload.dart';
 import 'package:lepton_sci_web/study_material_section/all_S_M_category.dart';
 import 'package:lepton_sci_web/study_material_section/all_studymaterials.dart';
 import 'package:lepton_sci_web/study_material_section/upload_S-materil.dart';
 import 'package:lepton_sci_web/widgets/button_Container.dart';
 
-import 'category/S_m_category_screen.dart';
-
-class ListofStudyMaterialScreen extends StatelessWidget {
-  const ListofStudyMaterialScreen({super.key});
+class ListofStudyMaterialLiveScreen extends StatelessWidget {
+  const ListofStudyMaterialLiveScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,8 @@ class ListofStudyMaterialScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AllsmCategory()),
+                    MaterialPageRoute(
+                        builder: (context) => AllsmCategoryForLIve()),
                   );
                 },
                 child: ButtonContainerWidget(
@@ -52,7 +53,8 @@ class ListofStudyMaterialScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => UploadStudyMaterialScreen()),
+                        builder: (context) =>
+                            UploadStudyMaterialForLiveScreen()),
                   );
                 },
                 child: ButtonContainerWidget(

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lepton_sci_web/App_loginUsers/login_users.dart';
 import 'package:lepton_sci_web/admin/admin_hybrid_courses.dart';
+import 'package:lepton_sci_web/study_material_section/category/S_m_category_screen.dart';
 
 import '../auth_service.dart';
 import '../faculties/faculties_screen.dart';
@@ -252,7 +254,7 @@ class _AdminPanelState extends State<AdminPanel> {
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) {
-                              return ListofStudyMaterialScreen();
+                              return SmCategoryScreen();
                             },
                           ));
                         },
@@ -315,6 +317,45 @@ class _AdminPanelState extends State<AdminPanel> {
                                 children: [
                                   Text(
                                     "Ads for Book",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: screenSize.width * 1 / 70),
+                                  ),
+                                  Icon(Icons.book)
+                                ])),
+                      ),
+                    ),
+                    SizedBox(
+                      height: screenSize.height * 1 / 20,
+                    ),
+                    Container(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AllAppLoginUSERS()),
+                          );
+                        },
+                        child: Container(
+                            width: screenSize.width * 1 / 4,
+                            height: screenSize.height * 1 / 8,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(16),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 10,
+                                    color: Colors.black.withOpacity(0.06),
+                                    offset: const Offset(0, 4),
+                                  )
+                                ]),
+                            child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    "App Login Users",
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: screenSize.width * 1 / 70),

@@ -56,10 +56,10 @@ class StudyMaterialModel {
 
 class StudyMaterialToFireBase {
   Future studyMaterialController(
-      StudyMaterialModel studymaterialModel, context) async {
+      StudyMaterialModel studymaterialModel, context , var id) async {
     try {
       final firebase = FirebaseFirestore.instance;
-      final doc = firebase.collection("StudyMaterials").doc();
+      final doc = firebase.collection("RecordedCourselist").doc(id).collection("StudyMaterials").doc();
       studymaterialModel.id = doc.id;
 
       doc.set(studymaterialModel.toJson()).then((value) {

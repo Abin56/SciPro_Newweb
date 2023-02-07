@@ -18,9 +18,9 @@ class FloatingQuickAccessBar extends StatefulWidget {
 }
 
 class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
-  final Uri _url =
-      Uri.parse("https://storage.googleapis.com/scipro-bucket/app-release%20(3).apk");
-  Future<void> _launchUrl() async {
+  final Uri _url = Uri.parse(
+      "https://storage.googleapis.com/scipro-bucket/app-release%20(5).apk");
+  Future<void> _launchUrl() async {e
     if (!await launchUrl(_url)) {
       throw 'Could not launch $_url';
     }
